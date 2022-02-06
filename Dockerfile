@@ -19,14 +19,14 @@ RUN apt update && \
       && rm -rf /var/lib/apt/lists/*
 
 
-RUN wget  https://github.com/ca-gip/hackathon-api/releases/download/v0.1.1/hackathon-reward-${TARGETOS}-${TARGETARCH} -O hackathon-reward
+RUN wget  https://github.com/ca-gip/hackathon-api/releases/download/v0.1.1/hackathon-reward-linux-amd64 -O hackathon-reward
 RUN chmod a+x hackathon-reward && \
     mv ./hackathon-reward /usr/local/bin/hackathon-reward
 
-RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.buster_${TARGETARCH}.deb
+RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.buster_amd64.deb
 RUN apt update && \
-    apt install ./wkhtmltox_0.12.6-1.buster_${TARGETARCH}.deb  -y && \
-    rm wkhtmltox_0.12.6-1.buster_${TARGETARCH}.deb
+    apt install ./wkhtmltox_0.12.6-1.buster_amd64.deb  -y && \
+    rm wkhtmltox_0.12.6-1.buster_amd64.deb
 
 
 EXPOSE 8080

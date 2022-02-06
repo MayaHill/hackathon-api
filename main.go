@@ -6,9 +6,13 @@ import (
 	"hackathon-api/configs"
 	"hackathon-api/routes"
 	"time"
+	"net/http"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 func main() {
+	http.Handle("/metrics", promhttp.Handler())
+	http.ListenAndServe(":2112", nil)
 	router := gin.Default()
 
 	router.Use(cors.New(cors.Config{
